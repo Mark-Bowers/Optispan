@@ -57,10 +57,10 @@ export class DataManager {
 
     static getDefaultHealthData() {
         return {
-            sleep: {
-                score: 85,
-                hours: 7.5,
-                quality: 'good',
+            eat: {
+                score: 90,
+                calories: 1800,
+                meals: [],
                 history: []
             },
             move: {
@@ -69,10 +69,10 @@ export class DataManager {
                 activities: [],
                 history: []
             },
-            eat: {
-                score: 90,
-                calories: 1800,
-                meals: [],
+            sleep: {
+                score: 85,
+                hours: 7.5,
+                quality: 'good',
                 history: []
             },
             connect: {
@@ -107,7 +107,7 @@ export class DataManager {
     }
 
     static updateOverallProgress(healthData) {
-        const pillars = ['sleep', 'move', 'eat', 'connect'];
+        const pillars = ['eat', 'move', 'sleep', 'connect'];
         const overallProgress = pillars.reduce((acc, pillar) => {
             return acc + (healthData[pillar].score || 0);
         }, 0) / pillars.length;

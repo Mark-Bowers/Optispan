@@ -1,7 +1,7 @@
 import { DataManager } from '../utils/DataManager.js';
-import { SleepPillar } from './pillars/SleepPillar.js';
-import { MovePillar } from './pillars/MovePillar.js';
 import { EatPillar } from './pillars/EatPillar.js';
+import { MovePillar } from './pillars/MovePillar.js';
+import { SleepPillar } from './pillars/SleepPillar.js';
 import { ConnectPillar } from './pillars/ConnectPillar.js';
 import { ProgressArc } from '../utils/ProgressArc.js';
 
@@ -25,10 +25,10 @@ export function renderDashboard({ user, onLogout }) {
             </header>
 
             <div class="pillars-grid">
-                <div class="pillar" data-pillar="sleep">
-                    <h3>Sleep</h3>
-                    <div class="pillar-progress" id="sleep-progress"></div>
-                    <p>7.5 hours avg</p>
+                <div class="pillar" data-pillar="eat">
+                    <h3>Eat</h3>
+                    <div class="pillar-progress" id="eat-progress"></div>
+                    <p>Daily goals met</p>
                     <button class="details-button">View Details</button>
                 </div>
 
@@ -39,10 +39,10 @@ export function renderDashboard({ user, onLogout }) {
                     <button class="details-button">View Details</button>
                 </div>
 
-                <div class="pillar" data-pillar="eat">
-                    <h3>Eat</h3>
-                    <div class="pillar-progress" id="eat-progress"></div>
-                    <p>Daily goals met</p>
+                <div class="pillar" data-pillar="sleep">
+                    <h3>Sleep</h3>
+                    <div class="pillar-progress" id="sleep-progress"></div>
+                    <p>7.5 hours avg</p>
                     <button class="details-button">View Details</button>
                 </div>
 
@@ -62,25 +62,25 @@ export function renderDashboard({ user, onLogout }) {
 
     // Initialize pillar components
     const pillars = {
-        sleep: new SleepPillar(),
-        move: new MovePillar(),
         eat: new EatPillar(),
+        move: new MovePillar(),
+        sleep: new SleepPillar(),
         connect: new ConnectPillar()
     };
 
     // Initialize progress arcs
     const healthData = DataManager.getHealthData();
     const progressArcs = {
-        sleep: new ProgressArc(document.getElementById('sleep-progress'), {
-            foregroundColor: '#34c759',
+        eat: new ProgressArc(document.getElementById('eat-progress'), {
+            foregroundColor: '#ff9500',
             size: 120
         }),
         move: new ProgressArc(document.getElementById('move-progress'), {
             foregroundColor: '#4a90e2',
             size: 120
         }),
-        eat: new ProgressArc(document.getElementById('eat-progress'), {
-            foregroundColor: '#ff9500',
+        sleep: new ProgressArc(document.getElementById('sleep-progress'), {
+            foregroundColor: '#34c759',
             size: 120
         }),
         connect: new ProgressArc(document.getElementById('connect-progress'), {
